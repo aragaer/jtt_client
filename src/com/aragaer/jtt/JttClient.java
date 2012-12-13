@@ -44,15 +44,4 @@ public abstract class JttClient {
 		context.unbindService(conn);
 		context = null;
 	}
-
-	public JTTHour now() {
-		if (service == null)
-			throw new IllegalStateException();
-		try {
-			return service.now();
-		} catch (RemoteException e) {
-			Log.e(TAG, "Failed to get 'now': " + e);
-			return null;
-		}
-	}
 }
