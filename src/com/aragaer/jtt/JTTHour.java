@@ -11,7 +11,7 @@ public class JTTHour implements Parcelable {
 	private static final int COMPAT_COEFF = QUARTERS * PARTS / 100;
 
 	public static final String Glyphs[] = { "酉", "戌", "亥", "子", "丑", "寅", "卯",
-		"辰", "巳", "午", "未", "申" };
+			"辰", "巳", "午", "未", "申" };
 
 	public boolean isNight;
 	public int num; // 0 to 11, where 0 is hour of Cock and 11 is hour of Monkey
@@ -19,13 +19,13 @@ public class JTTHour implements Parcelable {
 	public int quarter; // 0 to 3
 	public int quarter_parts; // 0 to PARTS
 
-    public JTTHour(int num) {
+	public JTTHour(int num) {
 		this(num, QUARTERS / 2, 0);
-    }
+	}
 
-    public JTTHour(int n, int f) {
-        this.setTo(n, f);
-    }
+	public JTTHour(int n, int f) {
+		this.setTo(n, f);
+	}
 
 	public JTTHour(int n, int q, int f) {
 		this.setTo(n, q, f);
