@@ -14,6 +14,7 @@ public class JttClient {
 	private final static Intent service_intent = new Intent(
 			"com.aragaer.jtt.SERVICE");
 
+	private boolean is_bound;
 	private IJttService service;
 
 	private final ServiceConnection conn = new ServiceConnection() {
@@ -21,6 +22,7 @@ public class JttClient {
 			service = IJttService.Stub.asInterface((IBinder) boundService);
 			Log.d(TAG, "Service connected");
 			onConnected();
+			is_bound = true;
 		}
 
 		public void onServiceDisconnected(ComponentName name) {
@@ -31,14 +33,23 @@ public class JttClient {
 
 	public JttClient() {}
 
-	public void onConnected() {};
+	protected void onConnected() {};
 
 	public void bind(Context context) {
+		if (is_bound)
+			throw new IllegalStateException("Already bound");
 		context.bindService(service_intent, conn, 0);
 	}
 
 	public void unbind(Context context) {
+		if (!is_bound)
+			throw new IllegalStateException("Not bound");
 		context.unbindService(conn);
+		is_bound = false;
+	}
+
+	public boolean is_bound() {
+		return is_bound;
 	}
 
 	public long[] getTr(long jdn) {
