@@ -8,10 +8,9 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-public abstract class JttClient {
+public class JttClient {
 	private static final String TAG = JttClient.class.getSimpleName();
 
-	private Context context;
 	private final static Intent service_intent = new Intent(
 			"com.aragaer.jtt.SERVICE");
 
@@ -30,19 +29,16 @@ public abstract class JttClient {
 		}
 	};
 
-	public JttClient(Context ctx) {
-		context = ctx;
-	}
+	public JttClient() {}
 
-	public abstract void onConnected();
+	public void onConnected() {};
 
-	public void bind() {
+	public void bind(Context context) {
 		context.bindService(service_intent, conn, 0);
 	}
 
-	public void release() {
+	public void unbind(Context context) {
 		context.unbindService(conn);
-		context = null;
 	}
 
 	public long[] getTr(long jdn) {
