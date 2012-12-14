@@ -44,4 +44,15 @@ public abstract class JttClient {
 		context.unbindService(conn);
 		context = null;
 	}
+
+	public long[] getTr(long jdn) {
+		if (service == null)
+			throw new IllegalStateException("Not registered");
+		try {
+			return service.getTr(jdn);
+		} catch (RemoteException e) {
+			Log.e(TAG, "getTr("+jdn+"): "+e);
+			return null;
+		}
+	}
 }
