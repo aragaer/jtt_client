@@ -15,7 +15,6 @@ public class JTTHour implements Parcelable {
 
 	public boolean isNight;
 	public int num; // 0 to 11, where 0 is hour of Cock and 11 is hour of Monkey
-	public int percent; // 0 to 99 - compatibility
 	public int quarter; // 0 to 3
 	public int quarter_parts; // 0 to PARTS
 
@@ -45,7 +44,6 @@ public class JTTHour implements Parcelable {
 		isNight = n < 6;
 		quarter = q;
 		quarter_parts = f;
-		percent = (q * PARTS + quarter_parts) / COMPAT_COEFF;
 	}
 
 	public static final Parcelable.Creator<JTTHour> CREATOR = new Parcelable.Creator<JTTHour>() {
