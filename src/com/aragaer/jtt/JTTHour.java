@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class JTTHour implements Parcelable {
 	public static final int QUARTERS = 4;
-	public static final int PARTS = 100; // split quarter to that much parts
+	public static final int PARTS = 10; // split quarter to that much parts
 
 	/* compatibility calculations */
 	private static final int COMPAT_COEFF = QUARTERS * PARTS / 100;
