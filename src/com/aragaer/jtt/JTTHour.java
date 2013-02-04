@@ -7,9 +7,6 @@ public class JTTHour implements Parcelable {
 	public static final int QUARTERS = 4;
 	public static final int PARTS = 10; // split quarter to that much parts
 
-	/* compatibility calculations */
-	private static final int COMPAT_COEFF = QUARTERS * PARTS / 100;
-
 	public static final String Glyphs[] = { "酉", "戌", "亥", "子", "丑", "寅", "卯",
 			"辰", "巳", "午", "未", "申" };
 
@@ -22,20 +19,8 @@ public class JTTHour implements Parcelable {
 		this(num, QUARTERS / 2, 0);
 	}
 
-	public JTTHour(int n, int f) {
-		this.setTo(n, f);
-	}
-
 	public JTTHour(int n, int q, int f) {
 		this.setTo(n, q, f);
-	}
-
-	// compatibility method
-	public void setTo(int n, int f) {
-		f *= COMPAT_COEFF;
-		int q = f / PARTS;
-		f -= q * PARTS;
-		setTo(n, q, f);
 	}
 
 	// Instead of reallocation, reuse existing object
