@@ -96,7 +96,7 @@ public class JTTHour implements Parcelable {
 		if (reuse == null)
 			reuse = new JTTHour(0);
 		final int unshifted_q = wrapped / PARTS + QUARTERS / 2; // that is shifted_q + shift back
-		reuse.setTo(unshifted_q / QUARTERS, unshifted_q % QUARTERS, wrapped % PARTS);
+		reuse.setTo(unshifted_q / QUARTERS % 12, unshifted_q % QUARTERS, wrapped % PARTS);
 		return reuse;
 	}
 }
