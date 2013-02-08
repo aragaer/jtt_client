@@ -45,10 +45,7 @@ public class JTTHour implements Parcelable {
 	};
 
 	private JTTHour(Parcel in) {
-		final int n = in.readInt();
-		final int q = in.readInt();
-		final int f = in.readInt();
-		setTo(n, q, f);
+		unwrap(in.readInt(), this);
 	}
 
 	@Override
@@ -58,9 +55,7 @@ public class JTTHour implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(num);
-		dest.writeInt(quarter);
-		dest.writeInt(quarter_parts);
+		dest.writeInt(wrap());
 	}
 
 	/*
