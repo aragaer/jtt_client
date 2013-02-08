@@ -21,8 +21,8 @@ public class JttClient {
 		public void onServiceConnected(ComponentName name, IBinder boundService) {
 			service = IJttService.Stub.asInterface((IBinder) boundService);
 			Log.d(TAG, "Service connected");
-			onConnected();
 			is_bound = true;
+			onConnected();
 		}
 
 		public void onServiceDisconnected(ComponentName name) {
@@ -44,8 +44,8 @@ public class JttClient {
 	public void unbind(Context context) {
 		if (!is_bound)
 			throw new IllegalStateException("Not bound");
-		context.unbindService(conn);
 		is_bound = false;
+		context.unbindService(conn);
 	}
 
 	public boolean is_bound() {
